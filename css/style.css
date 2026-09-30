@@ -1,6 +1,6 @@
 :root {
   --page-border-radius: 3px;
-  --card-size: 210px;
+  --card-size: 180px;
 
   --page-background: #0e131a;
   --page-border: #0e131a;
@@ -72,17 +72,15 @@
 
 .game-field {
   display: grid;
-  grid-template-columns: repeat(auto-fit, var(--card-size));
+  grid-template-columns: repeat(4, var(--card-size));
   justify-content: center;
   gap: 10px;
   padding: 20px;
-  width: 100%;
   border: 2px solid var(--page-border);
   border-radius: 15px;
 }
 
 .game-card {
-  position: relative;
   height: var(--card-size);
   border-radius: 10px;
   perspective: 50rem;
@@ -127,7 +125,7 @@
 
 .game-footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   width: 100%;
 }
 
