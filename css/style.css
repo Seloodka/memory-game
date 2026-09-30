@@ -1,6 +1,12 @@
 :root {
-  --page-border: #0b9c6c;
-  --header-button-border: #bf6000;
+  --page-border-radius: 3px;
+  --card-size: 210px;
+
+  --page-background: #0e131a;
+  --page-border: #0e131a;
+  --container-background: #3b82f6;
+  --card-background: #f1f5f9;
+  --text-color: #f1f5f9;
 }
 
 * {
@@ -13,6 +19,8 @@
   display: flex;
   justify-content: center;
   padding: 20px;
+  background-color: var(--page-background);
+  color: var(--text-color);
 }
 
 .page-wrapper {
@@ -20,17 +28,17 @@
   grid-auto-flow: row;
   gap: 40px;
   width: 100%;
-  max-width: 960px;
+  max-width: 1440px;
 }
 
 .page-header {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 30px 0;
   width: 100%;
-  height: 60px;
-  border: 2px solid var(--page-border);
   border-radius: 20px;
+  background-color: var(--container-background);
 }
 
 .header-buttons-container {
@@ -39,15 +47,94 @@
 }
 
 .header-button {
-  padding: 10px;
+  padding: 12px 34px;
   background: none;
-  border: 2px solid var(--header-button-border);
+  color: var(--text-color);
+  border: 2px solid var(--page-border);
   border-radius: 10px;
   transition: all 0.3s ease-in-out;
 }
 
 .header-button:hover {
   cursor: pointer;
-  background-color: var(--header-button-border);
-  color: #ffffff;
+  background-color: var(--page-border);
+}
+
+.game-wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  gap: 40px;
+  padding: 60px 20px;
+  border-radius: 20px;
+  background-color: var(--container-background);
+}
+
+.game-field {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, var(--card-size));
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+  width: 100%;
+  border: 2px solid var(--page-border);
+  border-radius: 15px;
+}
+
+.game-card {
+  position: relative;
+  height: var(--card-size);
+  border-radius: 10px;
+  perspective: 50rem;
+}
+
+.game-card:hover:not(.game-card_open) {
+  cursor: pointer;
+}
+
+.card-side {
+  position: absolute;
+  backface-visibility: hidden;
+  overflow: hidden;
+  border-radius: inherit;
+  transition: transform 0.4s ease-in-out;
+}
+
+.card-side_front {
+  width: 100%;
+  height: 100%;
+  transform: rotateY(-180deg);
+}
+
+.card-side_back {
+  width: 100%;
+  height: 100%;
+  background-image: url("../assets/card-back.webp");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 2px solid var(--page-border);
+  background-color: var(--card-background);
+  transform: rotateY(0deg);
+}
+
+.card-side img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.game-footer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.game-card_open .card-side_back {
+  transform: rotateY(180deg);
+}
+
+.game-card_open .card-side_front {
+  transform: rotateY(0deg);
 }
