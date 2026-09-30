@@ -3,3 +3,16 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.page {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.page-wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 40px;
+  max-width: 960px;
+}
