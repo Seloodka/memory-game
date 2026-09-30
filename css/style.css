@@ -1,3 +1,8 @@
+:root {
+  --page-border: #0b9c6c;
+  --header-button-border: #bf6000;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -11,8 +16,38 @@
 }
 
 .page-wrapper {
-  display: flex;
-  flex-flow: column nowrap;
+  display: grid;
+  grid-auto-flow: row;
   gap: 40px;
+  width: 100%;
   max-width: 960px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  border: 2px solid var(--page-border);
+  border-radius: 20px;
+}
+
+.header-buttons-container {
+  display: inline-flex;
+  gap: 20px;
+}
+
+.header-button {
+  padding: 10px;
+  background: none;
+  border: 2px solid var(--header-button-border);
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+.header-button:hover {
+  cursor: pointer;
+  background-color: var(--header-button-border);
+  color: #ffffff;
 }
