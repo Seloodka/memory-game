@@ -15,7 +15,7 @@
   box-sizing: border-box;
 }
 
-.page {
+.page-wrapper {
   display: flex;
   justify-content: center;
   padding: 20px;
@@ -23,7 +23,7 @@
   color: var(--text-color);
 }
 
-.page-wrapper {
+.page {
   display: grid;
   grid-auto-flow: row;
   gap: 40px;
