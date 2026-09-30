@@ -8,13 +8,28 @@
   <title>Memory game</title>
 </head>
 
-<body>
-  <header class="page-header">
-    <div class="header-buttons">
-      <button class="header-button">Новая игра</button>
-      <button class="header-button">Таблица лидеров</button>
-    </div>
-  </header>
+<body class="page">
+  <div class="page-wrapper">
+    <header class="page-header">
+      <div class="header-buttons">
+        <button class="header-button">Новая игра</button>
+        <button class="header-button">Таблица лидеров</button>
+      </div>
+    </header>
+    <section class="game-wrapper">
+      <div class="game-field">
+        <div class="game-card">
+          <div class="card-side card-side_front">Front</div>
+          <div class="card-side card-side_back">Back</div>
+        </div>
+      </div>
+      <footer class="game-footer">
+        <span>Turns: 0</span>
+        <span>Pairs found: 0/8</span>
+      </footer>
+    </section>
+  </div>
+
   <script type="module" src="./js/main.js"></script>
 </body>
 
