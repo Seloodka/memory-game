@@ -115,18 +115,19 @@ export const startNewGame = () => {
 };
 
 export const gameSetUp = () => {
-  game.cardPairs = createCardPairs();
   game.fieldElement = document.querySelector(".game-field");
   game.turnsElement = document.querySelector(".game-turns");
   game.foundPairsElement = document.querySelector(".game-found-pairs");
+  game.cardPairs = createCardPairs();
 };
 
 const game = {
-  cardPairs: null,
-  currentOpenedCard: null,
   fieldElement: null,
   turnsElement: null,
   foundPairsElement: null,
+
+  cardPairs: null,
+  currentOpenedCard: null,
   turns: 0,
   foundPairs: 0,
 
