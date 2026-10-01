@@ -84,6 +84,7 @@
   height: var(--card-size);
   border-radius: 10px;
   perspective: 50rem;
+  transition: transform 0.2s ease-out;
 }
 
 .game-card:hover:not(.game-card_open) {
@@ -135,4 +136,8 @@
 
 .game-card_open .card-side_front {
   transform: rotateY(0deg);
+}
+
+.game-card_guessed {
+  transform: scale(0.9);
 }
