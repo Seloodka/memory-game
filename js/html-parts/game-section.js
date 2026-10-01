@@ -1,4 +1,4 @@
-const GAME_CARDS = 8;
+import { GAME_CARDS } from "../game.js";
 
 const createSectionHeader = () => {
   const sectionHeader = document.createElement("header");
