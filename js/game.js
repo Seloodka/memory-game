@@ -27,8 +27,12 @@ const shuffleCards = () => {
   gameField.append(...cards);
 };
 
-const toggleCardSide = (card) => {
-  card.classList.toggle("game-card_open");
+const closeCard = (card) => {
+  card.classList.remove("game-card_open");
+};
+
+const openCard = (card) => {
+  card.classList.add("game-card_open");
 };
 
 const setGuessedPair = (...cards) => {
@@ -38,14 +42,14 @@ const setGuessedPair = (...cards) => {
   setTimeout(() => {
     cards.forEach((card) => card.classList.add("game-card_guessed"));
     game.fieldElement.addEventListener("click", gameFieldCardClick);
-  }, 400);
+  }, 250);
 };
 
 const closeOpenedCards = (...cards) => {
   game.fieldElement.removeEventListener("click", gameFieldCardClick);
 
   setTimeout(() => {
-    cards.forEach((card) => toggleCardSide(card));
+    cards.forEach((card) => closeCard(card));
     game.fieldElement.addEventListener("click", gameFieldCardClick);
   }, 800);
 };
@@ -58,12 +62,12 @@ const nextTurn = () => {
 const handleCardClick = (card) => {
   if (!game.currentOpenedCard) {
     game.currentOpenedCard = card;
-    toggleCardSide(card);
+    openCard(card);
 
     return;
   }
 
-  toggleCardSide(card);
+  openCard(card);
 
   if (game.cardPairs.get(card) === game.currentOpenedCard) {
     setGuessedPair(card, game.currentOpenedCard);
@@ -96,9 +100,9 @@ const gameFieldCardClick = (event) => {
 };
 
 const resetField = () => {
-  const cards = document.querySelectorAll(".game-card");
+  const cards = Array.from(game.fieldElement.children);
   cards.forEach((card) => {
-    card.classList.remove("game-card_open", "card-guessed");
+    card.classList.remove("game-card_open", "game-card_guessed");
   });
 };
 
@@ -110,14 +114,23 @@ const endGameWithWin = () => {
   game.fieldElement.removeEventListener("click", gameFieldCardClick);
 };
 
+export const restartGame = () => {
+  game.fieldElement.removeEventListener("click", gameFieldCardClick);
+  startNewGame();
+};
+
 export const startNewGame = () => {
   resetField();
-  shuffleCards();
+
+  setTimeout(() => {
+    shuffleCards();
+    game.fieldElement.addEventListener("click", gameFieldCardClick);
+  }, 300);
 
   game.turns = 0;
   game.foundPairs = 0;
   game.currentOpenedCard = null;
-  game.fieldElement.addEventListener("click", gameFieldCardClick);
+  game.resetCounters();
 };
 
 export const gameSetUp = () => {
@@ -150,5 +163,10 @@ const game = {
 
     const finalText = elementText.join(": ");
     this.foundPairsElement.innerText = finalText;
+  },
+
+  resetCounters() {
+    this.turnsElement.innerText = `Turns: ${this.turns}`;
+    this.foundPairsElement.innerText = "Pairs found: 0/8";
   },
 };
