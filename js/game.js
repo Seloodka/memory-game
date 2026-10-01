@@ -1,3 +1,5 @@
+import { addGameStatsToTop } from "./local-storage.js";
+
 export const GAME_CARDS = 8;
 
 const createCardPairs = () => {
@@ -101,6 +103,10 @@ const resetField = () => {
 };
 
 const endGameWithWin = () => {
+  const todayDate = new Date().toLocaleDateString("en-GB");
+
+  addGameStatsToTop(game.turns, todayDate);
+
   game.fieldElement.removeEventListener("click", gameFieldCardClick);
 };
 
