@@ -1,0 +1,33 @@
+@media only screen and (width <= 930px) {
+  :root {
+    --card-size: 120px;
+  }
+}
+
+@media only screen and (width <= 650px) {
+  :root {
+    --card-size: 100px;
+  }
+
+  .game-field {
+    grid-template-columns: repeat(3, var(--card-size));
+  }
+}
+
+@media only screen and (width <= 460px) {
+  .page {
+    padding: 10px;
+  }
+
+  .page-header {
+    padding: 30px 10px;
+  }
+
+  .game-wrapper {
+    padding: 30px 10px;
+  }
+
+  .game-field {
+    grid-template-columns: repeat(2, var(--card-size));
+  }
+}
