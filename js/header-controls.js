@@ -12,8 +12,10 @@ const newGameControlHandler = () => {
   }
 };
 
-export const headerControlsSetUp = () => {
+const headerControlsSetUp = () => {
   const controls = document.querySelectorAll(".header-button");
   controls[0].addEventListener("click", newGameControlHandler);
   controls[1].addEventListener("click", showLeaderboardHandler);
 };
+
+export { headerControlsSetUp };
