@@ -1,9 +1,12 @@
-const createHeaderButton = (number) => {
+const createHeaderButton = (buttonsText) => {
   const buttons = [];
 
-  for (let i = 0; i < number; i++) {
+  for (const buttonText of buttonsText) {
     const button = document.createElement("button");
+
     button.classList.add("header-button");
+    button.textContent = buttonText;
+    button.dataset.action = buttonText.toLowerCase().split(" ").join("-");
 
     buttons.push(button);
   }
@@ -14,18 +17,14 @@ const createHeaderButton = (number) => {
 const createHeader = () => {
   const header = document.createElement("header");
   const buttonsContainer = document.createElement("div");
-  const headerButtons = createHeaderButton(2);
   const buttonsNames = ["New game", "Leaderboard"];
+  const headerButtons = createHeaderButton(buttonsNames);
 
   header.classList.add("page-header");
   buttonsContainer.classList.add("header-buttons-container");
 
-  headerButtons.forEach((button, ind) => {
-    button.innerText = buttonsNames[ind];
-    buttonsContainer.append(button);
-  });
-
   header.append(buttonsContainer);
+  buttonsContainer.append(...headerButtons);
 
   return header;
 };

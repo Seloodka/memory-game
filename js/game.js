@@ -117,7 +117,7 @@ const endGameWithWin = () => {
 
   addGameStatsToTop(game.turns, todayDate);
 
-  const winModalParts = createWinModalWindow(game.turns);
+  const winModalParts = createWinModalWindow();
   openModalWithParts(winModalParts);
 
   setTimeout(() => {
@@ -141,7 +141,7 @@ const startNewGame = () => {
   resetField();
 
   setTimeout(() => {
-    //shuffleCards();
+    shuffleCards();
     game.fieldElement.addEventListener("click", gameFieldCardClick);
   }, 300);
 
@@ -156,6 +156,10 @@ const gameSetUp = () => {
   game.turnsElement = document.querySelector(".game-turns");
   game.foundPairsElement = document.querySelector(".game-found-pairs");
   game.cardPairs = createCardPairs();
+};
+
+const getGameTurns = () => {
+  return game.turns;
 };
 
 const game = {
@@ -188,4 +192,4 @@ const game = {
   },
 };
 
-export { GAME_CARDS, gameSetUp, startNewGame };
+export { GAME_CARDS, gameSetUp, startNewGame, getGameTurns };
