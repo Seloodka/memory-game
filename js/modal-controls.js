@@ -1,6 +1,19 @@
 import { modalElementParts } from "./html-parts/modal.js";
 import { startNewGame } from "./game.js";
 
+const preventScrollToggle = () => {
+  const scrollWidth = window.innerWidth - document.documentElement.clientWidth;
+  const pageWrapper = document.querySelector(".page-wrapper");
+
+  if (!pageWrapper.classList.contains("prevent-scroll")) {
+    document.body.classList.add("prevent-scroll");
+    document.body.style.paddingRight = scrollWidth + "px";
+  } else {
+    document.body.classList.remove("prevent-scroll");
+    document.body.style.paddingRight = "";
+  }
+};
+
 const modalCloseHandler = (event) => {
   if (event.type === "keydown" && event.key === "Escape") {
     closeModalWindow();
@@ -23,6 +36,8 @@ const modalCloseHandler = (event) => {
 };
 
 const openModalWithParts = (contentParts) => {
+  preventScrollToggle();
+
   for (const part in modalElementParts) {
     modalElementParts[part].append(contentParts[part]);
   }
@@ -34,6 +49,8 @@ const openModalWithParts = (contentParts) => {
 };
 
 const closeModalWindow = () => {
+  preventScrollToggle();
+
   const modalBackdrop = document.querySelector(".modal-backdrop");
 
   modalBackdrop.classList.remove("modal-backdrop_open");
