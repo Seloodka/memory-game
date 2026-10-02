@@ -39,19 +39,23 @@ const setGuessedPair = (...cards) => {
   game.addFoundPair();
   game.fieldElement.removeEventListener("click", gameFieldCardClick);
 
-  setTimeout(() => {
+  game.activeTimer = setTimeout(() => {
     cards.forEach((card) => card.classList.add("game-card_guessed"));
+
     game.fieldElement.addEventListener("click", gameFieldCardClick);
-  }, 250);
+    game.activeTimer = null;
+  }, 300);
 };
 
 const closeOpenedCards = (...cards) => {
   game.fieldElement.removeEventListener("click", gameFieldCardClick);
 
-  setTimeout(() => {
+  game.activeTimer = setTimeout(() => {
     cards.forEach((card) => closeCard(card));
+
     game.fieldElement.addEventListener("click", gameFieldCardClick);
-  }, 800);
+    game.activeTimer = null;
+  }, 900);
 };
 
 const nextTurn = () => {
@@ -114,12 +118,15 @@ const endGameWithWin = () => {
   game.fieldElement.removeEventListener("click", gameFieldCardClick);
 };
 
-export const restartGame = () => {
-  game.fieldElement.removeEventListener("click", gameFieldCardClick);
-  startNewGame();
-};
-
 export const startNewGame = () => {
+  game.fieldElement.removeEventListener("click", gameFieldCardClick);
+
+  if (game.activeTimer) {
+    clearTimeout(game.activeTimer);
+
+    game.activeTimer = null;
+  }
+
   resetField();
 
   setTimeout(() => {
@@ -144,6 +151,8 @@ const game = {
   fieldElement: null,
   turnsElement: null,
   foundPairsElement: null,
+
+  activeTimer: null,
 
   cardPairs: null,
   currentOpenedCard: null,

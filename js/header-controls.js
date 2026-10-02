@@ -1,4 +1,4 @@
-import { restartGame } from "./game.js";
+import { startNewGame } from "./game.js";
 
 const showLeaderboardHandler = () => {};
 
@@ -8,7 +8,7 @@ const newGameControlHandler = () => {
   );
 
   if (turns > 0) {
-    restartGame();
+    startNewGame();
   }
 };
 
