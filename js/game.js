@@ -167,11 +167,8 @@ const game = {
   addFoundPair() {
     this.foundPairs += 1;
 
-    const elementText = this.foundPairsElement.innerText.split(":");
-    elementText[1] = `${this.foundPairs}/${GAME_CARDS}`;
-
-    const finalText = elementText.join(": ");
-    this.foundPairsElement.innerText = finalText;
+    const text = "Pairs found:" + `${this.foundPairs}/${GAME_CARDS}`;
+    this.foundPairsElement.innerText = text;
   },
 
   resetCounters() {
