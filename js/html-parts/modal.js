@@ -33,9 +33,9 @@ const createLeaderboardTableFromData = (data) => {
   const thead = document.createElement("thead");
   const tbody = document.createElement("tbody");
 
-  table.classList.add("leaderboard-table");
-
   const theadCells = ["Top", "Turns", "Date"];
+
+  table.classList.add("leaderboard-table");
   caption.innerText = "Top results";
 
   table.append(caption, thead, tbody);
