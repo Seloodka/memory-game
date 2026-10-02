@@ -1,6 +1,6 @@
 import { addGameStatsToTop } from "./local-storage.js";
 
-export const GAME_CARDS = 8;
+const GAME_CARDS = 8;
 
 const createCardPairs = () => {
   const cards = Array.from(document.querySelector(".game-field").children);
@@ -118,7 +118,7 @@ const endGameWithWin = () => {
   game.fieldElement.removeEventListener("click", gameFieldCardClick);
 };
 
-export const startNewGame = () => {
+const startNewGame = () => {
   game.fieldElement.removeEventListener("click", gameFieldCardClick);
 
   if (game.activeTimer) {
@@ -140,7 +140,7 @@ export const startNewGame = () => {
   game.resetCounters();
 };
 
-export const gameSetUp = () => {
+const gameSetUp = () => {
   game.fieldElement = document.querySelector(".game-field");
   game.turnsElement = document.querySelector(".game-turns");
   game.foundPairsElement = document.querySelector(".game-found-pairs");
@@ -179,3 +179,5 @@ const game = {
     this.foundPairsElement.innerText = "Pairs found: 0/8";
   },
 };
+
+export { GAME_CARDS, gameSetUp, startNewGame };

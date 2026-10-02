@@ -30,7 +30,9 @@ const createHeader = () => {
   return header;
 };
 
-export const placeHeader = () => {
+const placeHeader = () => {
   const page = document.querySelector(".page");
   page.append(createHeader());
 };
+
+export { placeHeader };

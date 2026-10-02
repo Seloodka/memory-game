@@ -7,7 +7,7 @@ const sortTopWins = (topWins) => {
   });
 };
 
-export const addGameStatsToTop = (turns, date) => {
+const addGameStatsToTop = (turns, date) => {
   const game = { turns, date };
   const topWins = JSON.parse(localStorage.getItem("topWins")) || [];
 
@@ -20,3 +20,5 @@ export const addGameStatsToTop = (turns, date) => {
 
   localStorage.topWins = JSON.stringify(topWins);
 };
+
+export { addGameStatsToTop };

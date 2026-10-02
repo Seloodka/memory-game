@@ -78,7 +78,9 @@ const createGameSection = () => {
   return gameSection;
 };
 
-export const placeGameSection = () => {
+const placeGameSection = () => {
   const page = document.querySelector(".page");
   page.append(createGameSection());
 };
+
+export { placeGameSection };
