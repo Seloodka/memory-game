@@ -1,3 +1,7 @@
+const getTopWinsFromStorage = () => {
+  return JSON.parse(localStorage.getItem("topWins")) || [];
+};
+
 const sortTopWins = (topWins) => {
   topWins.sort((game1, game2) => {
     if (game1.turns === game2.turns) {
@@ -9,7 +13,7 @@ const sortTopWins = (topWins) => {
 
 const addGameStatsToTop = (turns, date) => {
   const game = { turns, date };
-  const topWins = JSON.parse(localStorage.getItem("topWins")) || [];
+  const topWins = getTopWinsFromStorage();
 
   topWins.push(game);
   sortTopWins(topWins);
@@ -21,4 +25,4 @@ const addGameStatsToTop = (turns, date) => {
   localStorage.topWins = JSON.stringify(topWins);
 };
 
-export { addGameStatsToTop };
+export { addGameStatsToTop, getTopWinsFromStorage };
