@@ -68,15 +68,6 @@ const placeModalTemplate = () => {
   modalElementParts.header = document.querySelector(".modal-header");
   modalElementParts.content = document.querySelector(".modal-content");
   modalElementParts.footer = document.querySelector(".modal-footer");
-
-  const a = createWinModalWindow(5);
-
-  console.log(a);
-  console.log(modalElementParts);
-
-  modalElementParts.header.append(a.header);
-  modalElementParts.content.append(a.content);
-  modalElementParts.footer.append(a.footer);
 };
 
 const modalElementParts = {
