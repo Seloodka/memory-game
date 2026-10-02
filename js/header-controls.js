@@ -1,21 +1,27 @@
-import { startNewGame } from "./game.js";
+import { startNewGame, getGameTurns } from "./game.js";
+import { createLeaderboardModalWindow } from "./html-parts/modal.js";
+import { openModalWithParts } from "./modal-controls.js";
 
-const showLeaderboardHandler = () => {};
+const handleHeaderButtonsClick = (event) => {
+  const button = event.target;
 
-const newGameControlHandler = () => {
-  const turns = parseInt(
-    document.querySelector(".game-turns").textContent.replace("Turns: ", ""),
-  );
+  if (button.dataset.action === "new-game") {
+    const turns = getGameTurns();
 
-  if (turns > 0) {
-    startNewGame();
+    if (turns > 0) {
+      startNewGame();
+    }
+  }
+
+  if (button.dataset.action === "leaderboard") {
+    const leaderboardModalParts = createLeaderboardModalWindow();
+    openModalWithParts(leaderboardModalParts);
   }
 };
 
 const headerControlsSetUp = () => {
-  const controls = document.querySelectorAll(".header-button");
-  controls[0].addEventListener("click", newGameControlHandler);
-  controls[1].addEventListener("click", showLeaderboardHandler);
+  const buttonsContainer = document.querySelector(".header-buttons-container");
+  buttonsContainer.addEventListener("click", handleHeaderButtonsClick);
 };
 
 export { headerControlsSetUp };
