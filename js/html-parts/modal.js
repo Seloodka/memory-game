@@ -1,9 +1,65 @@
+import { getTopWinsFromStorage } from "../local-storage.js";
+import { getGameTurns } from "../game.js";
+
+const createLeaderboardTableGameRow = (game) => {
+  const tr = document.createElement("tr");
+
+  for (const cell in game) {
+    const td = document.createElement("td");
+    td.textContent = game[cell];
+
+    tr.append(td);
+  }
+
+  return tr;
+};
+
+const createLeaderboardTableHeadRow = (cells) => {
+  const tr = document.createElement("tr");
+
+  for (const cell of cells) {
+    const th = document.createElement("th");
+    th.textContent = cell;
+
+    tr.append(th);
+  }
+
+  return tr;
+};
+
+const createLeaderboardTableFromData = (data) => {
+  const table = document.createElement("table");
+  const caption = document.createElement("caption");
+  const thead = document.createElement("thead");
+  const tbody = document.createElement("tbody");
+
+  table.classList.add("leaderboard-table");
+
+  const theadCells = ["Top", "Turns", "Date"];
+  caption.innerText = "Top results";
+
+  table.append(caption, thead, tbody);
+  thead.append(createLeaderboardTableHeadRow(theadCells));
+
+  data.forEach((game, ind) => {
+    const gameRowData = {
+      top: ind + 1,
+      turns: game.turns,
+      date: game.date,
+    };
+    const gameRow = createLeaderboardTableGameRow(gameRowData);
+
+    tbody.append(gameRow);
+  });
+
+  return table;
+};
+
 const createModalButtons = (...buttonsText) => {
   const buttons = [];
 
-  for (let i = 0; i < buttonsText.length; i++) {
+  for (const buttonText of buttonsText) {
     const button = document.createElement("button");
-    const buttonText = buttonsText[i];
 
     button.classList.add("modal-button");
     button.textContent = buttonText;
@@ -15,12 +71,45 @@ const createModalButtons = (...buttonsText) => {
   return buttons;
 };
 
-const createWinModalWindow = (turns) => {
+const createLeaderboardModalWindow = () => {
+  const modalTittle = document.createElement("h2");
+  const modalContainer = document.createElement("div");
+  const buttonContainer = document.createElement("div");
+  let modalContent;
+
+  const topWins = getTopWinsFromStorage();
+
+  if (topWins.length === 0) {
+    modalContent = document.createElement("h3");
+    modalContent.textContent = "No results yet";
+  } else {
+    modalContent = createLeaderboardTableFromData(topWins);
+  }
+
+  modalContainer.classList.add("modal-content_leaderboard");
+
+  modalTittle.textContent = "Leaderboard";
+
+  modalContainer.append(modalContent);
+  buttonContainer.append(...createModalButtons("Close"));
+
+  const leaderboardParts = {
+    header: modalTittle,
+    content: modalContainer,
+    footer: buttonContainer,
+  };
+
+  return leaderboardParts;
+};
+
+const createWinModalWindow = () => {
   const modalTittle = document.createElement("h2");
   const modalWinContent = document.createElement("div");
   const winContentTitle = document.createElement("h3");
   const winTotalScore = document.createElement("span");
   const buttonContainer = document.createElement("div");
+
+  const turns = getGameTurns();
 
   modalWinContent.classList.add("modal-content_win");
   winTotalScore.classList.add("modal-total-score");
@@ -76,4 +165,9 @@ const modalElementParts = {
   footer: null,
 };
 
-export { placeModalTemplate, createWinModalWindow, modalElementParts };
+export {
+  placeModalTemplate,
+  createWinModalWindow,
+  createLeaderboardModalWindow,
+  modalElementParts,
+};
