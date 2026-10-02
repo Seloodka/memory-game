@@ -1,4 +1,6 @@
 import { addGameStatsToTop } from "./local-storage.js";
+import { createWinModalWindow } from "./html-parts/modal.js";
+import { openModalWithParts } from "./modal-controls.js";
 
 const GAME_CARDS = 8;
 
@@ -115,6 +117,15 @@ const endGameWithWin = () => {
 
   addGameStatsToTop(game.turns, todayDate);
 
+  const winModalParts = createWinModalWindow(game.turns);
+  openModalWithParts(winModalParts);
+
+  setTimeout(() => {
+    Array.from(game.fieldElement.children).forEach((card) => {
+      card.classList.remove("game-card_guessed");
+    });
+  }, 300);
+
   game.fieldElement.removeEventListener("click", gameFieldCardClick);
 };
 
@@ -130,7 +141,7 @@ const startNewGame = () => {
   resetField();
 
   setTimeout(() => {
-    shuffleCards();
+    //shuffleCards();
     game.fieldElement.addEventListener("click", gameFieldCardClick);
   }, 300);
 
