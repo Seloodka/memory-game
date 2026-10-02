@@ -12,6 +12,14 @@
   .game-field {
     grid-template-columns: repeat(3, var(--card-size));
   }
+
+  .modal-window {
+    padding: 50px 20px;
+  }
+
+  .leaderboard-table {
+    min-width: 350px;
+  }
 }
 
 @media only screen and (width <= 460px) {
@@ -29,5 +37,13 @@
 
   .game-field {
     grid-template-columns: repeat(2, var(--card-size));
+  }
+
+  .modal-window {
+    padding: 50px 25px;
+  }
+
+  .leaderboard-table {
+    min-width: 0;
   }
 }
