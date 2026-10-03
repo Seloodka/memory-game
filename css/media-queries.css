@@ -74,4 +74,13 @@
   .leaderboard-table caption {
     font-size: 24px;
   }
+
+  .page-footer {
+    padding: 50px 10px;
+  }
+
+  .footer-link {
+    max-width: 100px;
+    max-height: 100px;
+  }
 }
