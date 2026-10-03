@@ -56,7 +56,8 @@ const createLeaderboardTableFromData = (data) => {
 };
 
 const createModalButtons = (...buttonsText) => {
-  const buttons = [];
+  const buttonContainer = document.createElement("div");
+  buttonContainer.classList.add("modal-button-container");
 
   for (const buttonText of buttonsText) {
     const button = document.createElement("button");
@@ -65,18 +66,18 @@ const createModalButtons = (...buttonsText) => {
     button.textContent = buttonText;
     button.dataset.action = buttonText.toLowerCase().split(" ").join("-");
 
-    buttons.push(button);
+    buttonContainer.append(button);
   }
 
-  return buttons;
+  return buttonContainer;
 };
 
 const createLeaderboardModalWindow = () => {
   const modalTittle = document.createElement("h2");
   const modalContainer = document.createElement("div");
-  const buttonContainer = document.createElement("div");
   let modalContent;
 
+  const buttonContainer = createModalButtons("Close");
   const topWins = getTopWinsFromStorage();
 
   if (topWins.length === 0) {
@@ -91,7 +92,6 @@ const createLeaderboardModalWindow = () => {
   modalTittle.textContent = "Leaderboard";
 
   modalContainer.append(modalContent);
-  buttonContainer.append(...createModalButtons("Close"));
 
   const leaderboardParts = {
     header: modalTittle,
@@ -107,20 +107,18 @@ const createWinModalWindow = () => {
   const modalWinContent = document.createElement("div");
   const winContentTitle = document.createElement("h3");
   const winTotalScore = document.createElement("span");
-  const buttonContainer = document.createElement("div");
 
+  const buttonContainer = createModalButtons("New Game", "Close");
   const turns = getGameTurns();
 
   modalWinContent.classList.add("modal-content_win");
   winTotalScore.classList.add("modal-total-score");
-  buttonContainer.classList.add("modal-button-container");
 
   modalTittle.textContent = "You Won!";
   winContentTitle.textContent = "Turns total";
   winTotalScore.textContent = turns;
 
   modalWinContent.append(winContentTitle, winTotalScore);
-  buttonContainer.append(...createModalButtons("New Game", "Close"));
 
   const winModalParts = {
     header: modalTittle,
