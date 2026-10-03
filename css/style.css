@@ -1,4 +1,6 @@
 @import url(./fonts.css);
-@import url(./page-styles.css);
+@import url(./header.css);
+@import url(./global-styles.css);
+@import url(./game.css);
 @import url(./modal.css);
 @import url(./media-queries.css);
