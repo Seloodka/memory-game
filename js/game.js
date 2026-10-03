@@ -20,8 +20,9 @@ const shuffleCards = () => {
   const gameField = document.querySelector(".game-field");
   const cards = Array.from(gameField.children);
 
-  for (let i = 0; i < cards.length; i++) {
-    let j = Math.floor(Math.random() * (i + 1));
+  for (let i = cards.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    console.log(i, j);
 
     [cards[i], cards[j]] = [cards[j], cards[i]];
   }
