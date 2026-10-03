@@ -22,7 +22,7 @@ const addGameStatsToTop = (turns, date) => {
     topWins.pop();
   }
 
-  localStorage.topWins = JSON.stringify(topWins);
+  localStorage.setItem("topWins", JSON.stringify(topWins));
 };
 
 export { addGameStatsToTop, getTopWinsFromStorage };
