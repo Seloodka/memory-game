@@ -14,7 +14,9 @@
   align-items: center;
   width: 100svw;
   height: 100dvh;
+  padding: 20px 0;
   background-color: var(--modal-backdrop-color);
+  overflow-y: auto;
   opacity: 0;
   visibility: hidden;
   transition:
@@ -33,8 +35,9 @@
   align-items: center;
   justify-content: center;
   gap: 40px;
-  padding: 50px;
   max-width: 800px;
+  margin: auto;
+  padding: 50px;
   background-color: var(--container-background);
   border: 2px solid var(--text-color);
   border-radius: 20px;
