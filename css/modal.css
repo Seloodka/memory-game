@@ -54,6 +54,7 @@
   border: 2px solid var(--text-color);
   border-radius: 20px;
   padding: 20px;
+  text-align: center;
 }
 
 .modal-content {
@@ -106,9 +107,7 @@
 }
 
 .leaderboard-table caption {
-  margin-bottom: 40px;
-  font-size: 28px;
-  font-weight: bold;
+  margin-bottom: 20px;
 }
 
 .leaderboard-table th,
@@ -129,9 +128,8 @@
 }
 
 .leaderboard-table th {
-  font-weight: bold;
-  font-size: 20px;
   overflow: hidden;
+  border-right: 2px dashed var(--text-color);
   background-color: var(--table-head-background);
 }
 
