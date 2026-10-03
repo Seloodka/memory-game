@@ -20,6 +20,18 @@
   .leaderboard-table {
     min-width: 350px;
   }
+
+  .page h1 {
+    font-size: 36px;
+  }
+
+  .page h2 {
+    font-size: 30px;
+  }
+
+  .page h3 {
+    font-size: 20px;
+  }
 }
 
 @media only screen and (width <= 460px) {
@@ -40,10 +52,26 @@
   }
 
   .modal-window {
-    padding: 50px 25px;
+    padding: 50px 10px;
+  }
+
+  .modal-content {
+    padding: 10px;
   }
 
   .leaderboard-table {
     min-width: 0;
+  }
+
+  .page h1 {
+    font-size: 32px;
+  }
+
+  .page h2 {
+    font-size: 24px;
+  }
+
+  .leaderboard-table caption {
+    font-size: 24px;
   }
 }

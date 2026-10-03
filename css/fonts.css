@@ -1,0 +1,56 @@
+.page {
+  font-family: "Fredoka", "Segoe UI", Verdana, sans-serif;
+  letter-spacing: 3%;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+  color: var(--text-color);
+}
+
+.page h1 {
+  font-family: "Isometra", fantasy;
+  font-style: normal;
+  font-size: 46px;
+}
+
+.page h2 {
+  font-family: "Isometra", fantasy;
+  font-style: normal;
+  font-size: 36px;
+}
+
+.page h3 {
+  font-style: normal;
+  font-size: 26px;
+}
+
+.leaderboard-table {
+  letter-spacing: 3%;
+  font-weight: 400;
+}
+
+.leaderboard-table caption {
+  letter-spacing: 3%;
+  font-weight: 650;
+  font-size: 30px;
+}
+
+.leaderboard-table th {
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.leaderboard-table td {
+  font-weight: 350;
+}
+
+.header-button,
+.modal-button {
+  font-family: "Fredoka", "Segoe UI", Verdana, sans-serif;
+  letter-spacing: 3%;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 120%;
+  color: var(--text-color);
+}
