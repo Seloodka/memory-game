@@ -182,7 +182,7 @@ const game = {
   addFoundPair() {
     this.foundPairs += 1;
 
-    const text = "Pairs found:" + `${this.foundPairs}/${GAME_CARDS}`;
+    const text = "Pairs found: " + `${this.foundPairs}/${GAME_CARDS}`;
     this.foundPairsElement.innerText = text;
   },
 
