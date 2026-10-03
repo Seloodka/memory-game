@@ -54,3 +54,8 @@
   line-height: 120%;
   color: var(--text-color);
 }
+
+.modal-total-score {
+  font-weight: 500;
+  font-size: 25px;
+}
