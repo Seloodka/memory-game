@@ -1,0 +1,86 @@
+@media only screen and (width <= 930px) {
+  :root {
+    --card-size: 120px;
+  }
+}
+
+@media only screen and (width <= 650px) {
+  :root {
+    --card-size: 100px;
+  }
+
+  .game-field {
+    grid-template-columns: repeat(3, var(--card-size));
+  }
+
+  .modal-window {
+    padding: 50px 20px;
+  }
+
+  .leaderboard-table {
+    min-width: 350px;
+  }
+
+  .page h1 {
+    font-size: 36px;
+  }
+
+  .page h2 {
+    font-size: 30px;
+  }
+
+  .page h3 {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (width <= 460px) {
+  .page {
+    padding: 10px;
+  }
+
+  .page-header {
+    padding: 30px 10px;
+  }
+
+  .game-wrapper {
+    padding: 30px 10px;
+  }
+
+  .game-field {
+    grid-template-columns: repeat(2, var(--card-size));
+  }
+
+  .modal-window {
+    padding: 50px 10px;
+  }
+
+  .modal-content {
+    padding: 10px;
+  }
+
+  .leaderboard-table {
+    min-width: 0;
+  }
+
+  .page h1 {
+    font-size: 32px;
+  }
+
+  .page h2 {
+    font-size: 24px;
+  }
+
+  .leaderboard-table caption {
+    font-size: 24px;
+  }
+
+  .page-footer {
+    padding: 50px 10px;
+  }
+
+  .footer-link {
+    max-width: 100px;
+    max-height: 100px;
+  }
+}
